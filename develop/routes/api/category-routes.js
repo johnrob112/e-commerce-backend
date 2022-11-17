@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
       },
     ],
   })
-  .then((categoryRows) => res.json(categoryRows))
+  .then((categoryDb) => res.json(categoryDb))
   .catch((err) => {
     console.log(err);
     res.status(500).json(err);
@@ -38,8 +38,8 @@ router.get('/:id', (req, res) => {
       },
     ],
   })
-    .then((categoryRows) => {
-      if (!categoryRows) {
+    .then((categoryDb) => {
+      if (!categoryDb) {
         res
           .status(404)
           .json({
@@ -47,7 +47,7 @@ router.get('/:id', (req, res) => {
           });
         return;
       }
-      res.json(categoryRows);
+      res.json(categoryDb);
     })
     .catch((err) => {
       console.log(err);
@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
   Category.create({
     category_name: req.body.category_name,
   })
-    .then((categoryRows) => res.json(categoryRows))
+    .then((categoryDb) => res.json(categoryDb))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -82,8 +82,8 @@ router.put('/:id', (req, res) => {
       },
     }
   )
-    .then((categoryRows) => {
-      if (!categoryRows) {
+    .then((categoryDb) => {
+      if (!categoryDB) {
         res
           .status(404)
           .json({
@@ -91,7 +91,7 @@ router.put('/:id', (req, res) => {
           });
         return;
       }
-      res.json(categoryRows);
+      res.json(categoryDb);
     })
     .catch((err) => {
       console.log(err);
@@ -108,8 +108,8 @@ router.delete('/:id', (req, res) => {
       id: req.params.id,
     },
   })
-    .then((categoryRows) => {
-      if (!categoryRows) {
+    .then((categoryDb) => {
+      if (!categoryDb) {
         res
           .status(404)
           .json({
@@ -117,7 +117,7 @@ router.delete('/:id', (req, res) => {
           });
         return;
       }
-      res.json(categoryRows);
+      res.json(categoryDb);
     })
     .catch((err) => {
       console.log(err);
